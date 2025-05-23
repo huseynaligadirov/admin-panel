@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Table, Input, Button, Popconfirm, Form, Space } from 'antd';
 
 const EditableTable = ({ columns, initialData, setData, rowKey = 'key' }) => {

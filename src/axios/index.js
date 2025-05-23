@@ -1,7 +1,5 @@
-// axiosConfig.js
 import axios from 'axios';
 
-// Function to get a cookie value by name
 function getCookie(name) {
   const value = `; ${document.cookie}`;
   const parts = value.split(`; ${name}=`);
@@ -10,7 +8,7 @@ function getCookie(name) {
 
 axios.interceptors.request.use(
   config => {
-    const token = getCookie('authToken'); // Retrieve the token from cookies
+    const token = getCookie('authToken'); 
     if (token) {
       config.headers['Authorization'] = `Bearer ${token}`;
     }
@@ -18,7 +16,6 @@ axios.interceptors.request.use(
   },
   error => Promise.reject(error)
 );
-
 
 axios.defaults.withCredentials = true;
 

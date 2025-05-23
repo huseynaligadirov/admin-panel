@@ -9,11 +9,7 @@ const DashboardLayout = () => {
   const items = [
     {
       key: "/users",
-      label: <Link to="/users">Page 1</Link>,
-    },
-    {
-      key: "/orders",
-      label: <Link to="/orders">Page 2</Link>,
+      label: <Link to="/users">User List</Link>,
     },
   ];
 

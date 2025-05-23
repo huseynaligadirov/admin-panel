@@ -13,13 +13,12 @@ function App() {
       <Route path="login" element={<Login />} />
       <Route path="register" element={<Register />} />
       <Route path="/" element={
-        <ProtectedRoute>
+ 
           <DashboardLayout />
-        </ProtectedRoute>
+   
       }>
-        <Route index element={<div>{t('Welcome')}</div>} />
+        <Route index element={<div>Welcome'</div>} />
         <Route path="users" element={<Users />} />
-        <Route path="orders" element={<Orders />} />
       </Route>
     </Routes>
   );
