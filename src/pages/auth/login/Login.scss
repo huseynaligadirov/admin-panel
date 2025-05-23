@@ -1,0 +1,61 @@
+
+$primary-color: #1890ff;
+$text-color: #333;
+$border-radius: 8px;
+$max-width: 400px;
+$padding: 1rem;
+
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin responsive($breakpoint) {
+  @if $breakpoint == tablet {
+    @media (max-width: 768px) { @content; }
+  }
+  @else if $breakpoint == mobile {
+    @media (max-width: 480px) { @content; }
+  }
+}
+
+.login-container {
+  @include flex-center;
+  height: 100vh;
+  background-color: #f0f2f5;
+  padding: $padding;
+
+  .login-form {
+    background: white;
+    padding: 2rem;
+    border-radius: $border-radius;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: $max-width;
+    text-align: center;
+
+    .login-title {
+      margin-bottom: 1.5rem;
+      color: $text-color;
+    }
+
+    .login-input {
+      margin-bottom: 1rem;
+      width: 100%;
+    }
+
+    .login-button {
+      width: 100%;
+      background-color: $primary-color;
+    }
+
+    @include responsive(mobile) {
+      padding: 1rem;
+      .login-title {
+        font-size: 1.2rem;
+      }
+    }
+  }
+}

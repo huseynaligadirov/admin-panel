@@ -1,33 +1,37 @@
-
 import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { Button } from 'antd';
 import Input from 'antd/es/input/Input';
+import './Login.scss';
 
 const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || '/dashboard';
 
-  const handleLogin = async (credentials) => {
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    const credentials = {
+      username: e.target.username.value,
+      password: e.target.password.value
+    };
+
     try {
-      // Perform login request
       await axios.post('/login', credentials);
-      // On success, navigate to the original destination
       navigate(from, { replace: true });
     } catch (error) {
-      // Handle login errors
       console.error('Login failed:', error);
     }
   };
 
   return (
-    <div>
-     <form>
-      <Input type="password" name="" id="" />
-      <Input type="text" name="" id="" />
-      <Button>Login</Button>
-     </form>
+    <div className="login-container">
+      <form className="login-form" onSubmit={handleLogin}>
+        <h2 className="login-title">Login</h2>
+        <Input className="login-input" name="username" placeholder="Username" />
+        <Input.Password className="login-input" name="password" placeholder="Password" />
+        <Button className="login-button" type="primary" htmlType="submit">Login</Button>
+      </form>
     </div>
   );
 };
